@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0988ca97-df84-4356-aa96-5326dc94834b" name="Default" comment="" />
+    <list default="true" id="0988ca97-df84-4356-aa96-5326dc94834b" name="Default" comment="">
+      <change type="DELETED" beforePath="E:\1 java 1\API\target\classes\Java\API.class" afterPath="" />
+      <change type="DELETED" beforePath="E:\1 java 1\FirstHomeTask\target\FirstHomeTask-tests.jar" afterPath="" />
+      <change type="DELETED" beforePath="E:\1 java 1\FirstHomeTask\target\FirstHomeTask.war" afterPath="" />
+      <change type="DELETED" beforePath="E:\1 java 1\FirstHomeTask\target\FirstHomeTask\WEB-INF\classes\SomeAmazingInterface.class" afterPath="" />
+      <change type="DELETED" beforePath="E:\1 java 1\FirstHomeTask\target\FirstHomeTask\WEB-INF\classes\SuperHero.class" afterPath="" />
+      <change type="DELETED" beforePath="E:\1 java 1\FirstHomeTask\target\FirstHomeTask\WEB-INF\web.xml" afterPath="" />
+      <change type="DELETED" beforePath="E:\1 java 1\FirstHomeTask\target\FirstHomeTask\index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="E:\1 java 1\FirstHomeTask\target\maven-archiver\pom.properties" afterPath="" />
+      <change type="DELETED" beforePath="E:\1 java 1\FirstHomeTask\target\maven-status\maven-compiler-plugin\compile\default-compile\createdFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="E:\1 java 1\FirstHomeTask\target\maven-status\maven-compiler-plugin\compile\default-compile\inputFiles.lst" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../testProject" afterPath="$PROJECT_DIR$/../testProject" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../API/src/main/Java/API.java" afterPath="$PROJECT_DIR$/../API/src/main/Java/API.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Java/APIimplementation.java" afterPath="$PROJECT_DIR$/src/main/Java/APIimplementation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FirstHomeTask/.idea/compiler.xml" afterPath="$PROJECT_DIR$/../FirstHomeTask/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FirstHomeTask/.idea/modules.xml" afterPath="$PROJECT_DIR$/../FirstHomeTask/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FirstHomeTask/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../FirstHomeTask/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="WEBservice.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,6 +49,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -62,11 +84,10 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1370" />
     <option name="height" value="744" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -89,6 +110,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -149,9 +172,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -162,7 +183,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FirstHomeTask" />
+    <property name="last_opened_file_path" value="E:/Обучение/Java/JavaRushHomeWork" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -327,7 +348,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="0" width="1370" height="744" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -339,7 +360,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963072" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -391,7 +412,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14003295">
           <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>

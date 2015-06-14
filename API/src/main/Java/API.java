@@ -1,4 +1,4 @@
-package Java;
+
 
 /**
  * Created by Stas on 02.06.2015.
