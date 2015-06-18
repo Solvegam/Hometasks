@@ -1,0 +1,21 @@
+<beans>
+
+    <bean id = "contact" class = "Contact">
+        <property name = "firstName" value = "Vasily"/>
+        <property name = "lastName" value = "Diesel"/>
+        <property name = "birthDate" value = "Diesel"/>
+
+    </bean>
+
+    <bean id = "contactDao" class = "ContactDao">
+
+
+    </bean>
+
+    <bean
+        id = "ContactService" class = "JavaContactService">
+        <property name = "contactDao" ref = "contactDao"/>
+
+    </bean>
+
+</beans>
