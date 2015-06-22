@@ -1,12 +1,14 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Stas on 17.06.2015.
  */
 public class ContactDao {
 
-    private List<Contact> contactList = new ArrayList<Contact>();
+    private Set<Contact> contactList = new HashSet<Contact>();
     public void addContact (Contact person)
     {
         contactList.add(person);
@@ -17,12 +19,12 @@ public class ContactDao {
 
     }
 
-    public void addFriendship (Contact firstPerson,Contact seconPerson)
+    public void addFriendship (Contact firstPerson,Contact secondPerson)
     {
 
     }
 
-    public void removeFriendShip (Contact firstPerson,Contact seconPerson)
+    public void removeFriendShip (Contact firstPerson,Contact secondPerson)
     {
 
     }

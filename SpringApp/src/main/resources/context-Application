@@ -1,21 +1,67 @@
 <beans>
 
-    <bean id = "contact" class = "Contact">
-        <property name = "firstName" value = "Vasily"/>
-        <property name = "lastName" value = "Diesel"/>
-        <property name = "birthDate" value = "Diesel"/>
-
+    <bean id="dateFormat" class="java.text.SimpleDateFormat">
+        <constructor-arg value="yyyy-MM-dd" />
     </bean>
 
-    <bean id = "contactDao" class = "ContactDao">
-
-
+    <bean id = "contactVaska" class = "java.Contact">
+        <constructor-arg index = "0" value = "Vasiliy"/>
+        <constructor-arg index = "1" value = "Artemov"/>
+        <constructor-arg index = "2">
+            <bean factory-bean = "dateFormat" factory-method="parse">
+                <constructor-arg value="1957-10-01" />
+            </bean>
+        </constructor-arg>
     </bean>
 
-    <bean
-        id = "ContactService" class = "JavaContactService">
+    <bean id = "newContact" class = "java.Contact"/>
+
+    <bean id = "contactSergey" class = "java.Contact">
+        <constructor-arg index = "0" value = "Sergey"/>
+        <constructor-arg index = "1" value = "Brin"/>
+        <constructor-arg index = "2">
+            <bean factory-bean = "dateFormat" factory-method="parse">
+                <constructor-arg value="1965-05-03" />
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id = "contactList" class = "java.util.Set">
+        <set>
+            <ref bean = "Vaska"/>
+            <ref bean = "Sergey"/>
+        </set>
+    </bean>
+
+
+    <bean id = "contactDao" class = "java.ContactDao">
+        <property name = "contactList" ref ="contactList"/>
+    </bean>
+
+    <bean id = "ContactService" class = "java.JavaContactService">
         <property name = "contactDao" ref = "contactDao"/>
+        <property name = "hobbyDao" ref = "hobbyDao"/>
+        <property name = "messageDao" ref = "messageDao"/>
+        <property name = "placeDao" ref = "placeDao"/>
+    </bean>
 
+    <bean id = "hobbyScience" class = "java.Hobby">
+        <constructor-arg index = "0" value="science"/>
+        <constructor-arg index = "1" value="I like to study some wierd stuff about our planet"/>
+    </bean>
+
+    <bean id = "hobbyFitness" class = "java.Hobby">
+        <constructor-arg index = "0" value="fitness"/>
+        <constructor-arg index = "1" value="I like to do morning exercises"/>
+    </bean>
+
+    <bean id = "newHobby" class = "java.Hobby"/>
+
+    <bean id = "HobbyDao" class = "java.HobbyDao">
+        <set>
+            <ref bean = "hobbyScience"/>
+            <ref bean = "hobbyFitness"/>
+        </set>
     </bean>
 
 </beans>

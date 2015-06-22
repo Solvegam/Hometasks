@@ -1,3 +1,6 @@
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -7,14 +10,25 @@ import java.util.Set;
  */
 public class JavaContactService {
 
+    ApplicationContext context = new ClassPathXmlApplicationContext("context-Application.xml");
     public ContactDao contactDao;
     public HobbyDao hobbyDao;
     public PlaceDao placeDao;
     public MessageDao messageDao;
 
+    public static void main(String[] args) {
+
+    }
+
     public void createContact(String firstName, String lastName, LocalDate birthDate)
     {
-        Contact contact = new Contact (firstName,lastName,birthDate);
+
+        Contact contact = (Contact)context.getBean("contact");
+
+        contact.setFirstName(firstName);
+        contact.setLastName(lastName);
+        contact.setBirthDate(birthDate);
+
         contactDao.addContact(contact);
     }
 
@@ -37,7 +51,7 @@ public class JavaContactService {
 
     public Set<Contact> getFriendList (Contact person)
     {
-        
+
     }
 
     public List<Message> Conversation (Contact firstContact,Contact secondContact)
