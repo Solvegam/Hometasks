@@ -1,3 +1,5 @@
+package firstPack.rootClasses;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -13,13 +15,6 @@ public class Contact
     public Set<Hobby> hobbies;
     public List<Place> places;
     public Set<Contact> friends;
-
-    public Contact (String firstName,String lastName,LocalDate birthDate)
-    {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDate = birthDate;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -55,7 +50,6 @@ public class Contact
         if (!firstName.equals(contact.firstName)) return false;
         if (!lastName.equals(contact.lastName)) return false;
         return birthDate.equals(contact.birthDate);
-
     }
 
     @Override
