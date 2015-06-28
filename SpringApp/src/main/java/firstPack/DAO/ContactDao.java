@@ -28,8 +28,51 @@ public class ContactDao {
 
     }
 
-    public void addFriendship (Contact firstPerson,Contact secondPerson)
+    public void addFriendship (ContactDTO firstContactDTO, ContactDTO secondContactDTO)
     {
+        Contact firstContact = null;
+        Contact secondContact = null;
+
+        for(Contact contact: contactList)
+        {
+            if(contact.getFirstName().equals(firstContactDTO.getFirstName())&&contact.getLastName().equals(firstContactDTO.getLastName()))
+            {
+                firstContact = contact;
+            }
+
+            if(contact.getFirstName().equals(secondContactDTO.getFirstName())&&contact.getLastName().equals(secondContactDTO.getLastName()))
+            {
+                secondContact = contact;
+            }
+        }
+
+        //проверка на наличие друга в списке друзей. Если такой друг уже есть, то его не добавляем
+        for(Contact contact: firstContact.friends)
+        {
+            if(contact.equals(secondContact))
+            {
+                System.out.println("There is such friend in " + firstContact.getFirstName() + "'s " + "friendlist");
+            }
+            else
+            {
+                firstContact.friends.add(secondContact);
+                System.out.println(secondContact.getFirstName() + " was added to the freindlist of " + firstContact.getFirstName());
+            }
+        }
+
+        for(Contact contact: secondContact.friends)
+        {
+            if(contact.equals(firstContact))
+            {
+                System.out.println("There is such friend in " + secondContact.getFirstName() + "'s " + "friendlist");
+            }
+            else
+            {
+                secondContact.friends.add(firstContact);
+                System.out.println(firstContact.getFirstName() + " was added to the freindlist of " + secondContact.getFirstName());
+            }
+        }
+
 
     }
 

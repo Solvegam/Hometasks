@@ -13,6 +13,7 @@ import firstPack.rootClasses.Hobby;
 import firstPack.rootClasses.Message;
 import firstPack.rootClasses.Place;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -63,9 +64,16 @@ public class JavaContactService {
         placeDao.addPlace(placeDTO);
     }
 
-    public  void addFriendship (Contact firstContact,Contact secondContact)
+    public  void addFriendship (String firstFriendFirstName,String firstFriendLastName,String secondFriendFirstName,String secondFriendLastName)
     {
+        ContactDTO firstContactDTO = new ContactDTO();
+        firstContactDTO.setFirstName(firstFriendFirstName);
+        firstContactDTO.setLastName(firstFriendLastName);
 
+        ContactDTO secondContactDTO = new ContactDTO();
+        secondContactDTO.setFirstName(secondFriendFirstName);
+        secondContactDTO.setLastName(secondFriendLastName);
+        contactDao.addFriendship(firstContactDTO,secondContactDTO);
     }
 
 //    public Set<Contact> getFriendList (Contact person)
