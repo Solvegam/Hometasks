@@ -27,13 +27,13 @@ import java.util.Set;
 
 public class JavaContactService {
 
-
+    @Autowired
     private ContactDao contactDao;
-
+    @Autowired
     private HobbyDao hobbyDao;
-
+    @Autowired
     private PlaceDao placeDao;
-
+    @Autowired
     private MessageDao messageDao;
 
     public void createContact(String firstName, String lastName, LocalDate birthDate)

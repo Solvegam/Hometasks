@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * Created by Stas on 17.06.2015.
  */
-
+@Component
 public class ContactDao {
 
     private Set<Contact> contactList = new HashSet<Contact>();

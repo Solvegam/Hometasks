@@ -1,5 +1,7 @@
 package firstPack.rootClasses;
 
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -7,6 +9,7 @@ import java.util.Set;
 /**
  * Created by Stas on 17.06.2015.
  */
+@Component
 public class Contact
 {
     private String firstName;
