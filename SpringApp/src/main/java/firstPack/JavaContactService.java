@@ -12,11 +12,18 @@ import firstPack.rootClasses.Contact;
 import firstPack.rootClasses.Hobby;
 import firstPack.rootClasses.Message;
 import firstPack.rootClasses.Place;
+import org.junit.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.*;
+
+import java.lang.reflect.Field;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,6 +32,7 @@ import java.util.Set;
  * Created by Stas on 17.06.2015.
  */
 @Service
+
 public class JavaContactService {
 
     @Autowired
@@ -64,6 +72,23 @@ public class JavaContactService {
         placeDao.addPlace(placeDTO);
     }
 
+    @Test
+    public void testJCS () throws NoSuchFieldException, IllegalAccessException {
+
+        PlaceDao placeDao = new PlaceDao();
+        this.placeDao = placeDao;
+        this.addPlace("Some hobby","Some description of place",1.5,2.5);
+
+        Place place = new Place();
+        place.setTitle("Some hobby");
+        place.setDescription("Some description of place");
+        place.setLongtitude(1.5);
+        place.setLatitude(2.5);
+
+        assertTrue(placeDao.getPlacetList().contains(place));
+
+    }
+
     public  void addFriendship (String firstFriendFirstName,String firstFriendLastName,String secondFriendFirstName,String secondFriendLastName)
     {
         ContactDTO firstContactDTO = new ContactDTO();
@@ -76,7 +101,16 @@ public class JavaContactService {
         contactDao.addFriendship(firstContactDTO,secondContactDTO);
     }
 
-//    public Set<Contact> getFriendList (Contact person)
+
+
+    public ContactDao getContactDao() {
+        return contactDao;
+    }
+
+    public void setHobbyDao(HobbyDao hobbyDao) {
+        this.hobbyDao = hobbyDao;
+    }
+    //    public Set<Contact> getFriendList (Contact person)
 //    {
 //
 //    }

@@ -11,4 +11,36 @@
     <context:annotation-config/>
     <context:component-scan base-package="firstPack"/>
 
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+
+        <property name="url" value="jdbc:mysql://localhost/springapp" />
+
+        <property name="username" value="root" />
+
+        <property name="password" value="1234" />
+
+    </bean>
+
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+        <property name="dataSource" ref="dataSource" />
+
+        <property name="hibernateProperties">
+
+            <props>
+
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.hbm2ddl.auto"> create</prop>
+
+            </props>
+
+        </property>
+
+    </bean>
+
+
 </beans>

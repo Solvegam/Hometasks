@@ -28,7 +28,11 @@ public class PlaceDao {
         placetList.add(place);
     }
 
-//    public Set<Contact>  getAllContactsForPlace (Place place)
+    public Set<Place> getPlacetList() {
+        return placetList;
+    }
+
+    //    public Set<Contact>  getAllContactsForPlace (Place place)
 //    {
 //
 //    }

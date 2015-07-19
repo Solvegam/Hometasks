@@ -1,5 +1,9 @@
 package firstPack.rootClasses;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -7,15 +11,38 @@ import java.util.Set;
 /**
  * Created by Stas on 17.06.2015.
  */
+
+@Entity
+@Table(name = "Contacts")
 public class Contact
 {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+
     private LocalDate birthDate;
+
+
     public Set<Hobby> hobbies;
+
+
     public List<Place> places;
+
+
     public Set<Contact> friends;
 
+    public Contact (){
+        super();
+    }
     public String getFirstName() {
         return firstName;
     }
@@ -38,6 +65,38 @@ public class Contact
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Set<Hobby> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(Set<Hobby> hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public List<Place> getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(List<Place> places) {
+        this.places = places;
+    }
+
+    public Set<Contact> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(Set<Contact> friends) {
+        this.friends = friends;
     }
 
     @Override

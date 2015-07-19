@@ -1,4 +1,5 @@
 import firstPack.JavaContactService;
+import firstPack.Test.ContactTests;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

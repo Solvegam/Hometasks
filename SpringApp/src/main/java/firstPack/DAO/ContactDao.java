@@ -1,11 +1,30 @@
 package firstPack.DAO;
 
 import firstPack.DTO.ContactDTO;
+import firstPack.JavaContactService;
 import firstPack.rootClasses.Contact;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.junit.Assert;
+import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
+import javax.management.Query;
+import javax.transaction.Transactional;
+
+import static org.mockito.Mockito.*;
+
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Stas on 17.06.2015.
@@ -13,7 +32,12 @@ import java.util.Set;
 @Component
 public class ContactDao {
 
+    @Autowired
+    public SessionFactory sessionFactory;
+
     private Set<Contact> contactList = new HashSet<Contact>();
+
+
     public void addContact (ContactDTO contactDTO)
     {
         Contact contact = new Contact();
@@ -21,6 +45,35 @@ public class ContactDao {
         contact.setLastName(contactDTO.getLastName());
         contact.setBirthDate(contactDTO.getBirthday());
         contactList.add(contact);
+
+        Session session = sessionFactory.openSession();
+        session.save(contact);
+    }
+
+    @Test
+    public void testAddContact () throws NoSuchFieldException, IllegalAccessException
+    {
+
+        ContactDao cd = new ContactDao();
+
+        ContactDTO cdto = new ContactDTO();
+        cdto.setFirstName("John");
+        cdto.setLastName("McClane");
+        cdto.setBirthday(LocalDate.parse("1960-01-01"));
+
+
+        cd.addContact(cdto);
+        Contact contact = new Contact();
+
+        contact.setFirstName("John");
+        contact.setLastName("McClane");
+        contact.setBirthDate(LocalDate.parse("1960-01-01"));
+        contact.friends = null;
+        contact.places = null;
+        contact.hobbies = null;
+
+        assertTrue(cd.getContactList().contains(contact));
+
     }
 
     public void deleteContact (Contact person)
@@ -72,12 +125,14 @@ public class ContactDao {
                 System.out.println(firstContact.getFirstName() + " was added to the freindlist of " + secondContact.getFirstName());
             }
         }
-
-
     }
 
     public void removeFriendShip (Contact firstPerson,Contact secondPerson)
     {
 
+    }
+
+    public Set<Contact> getContactList() {
+        return contactList;
     }
 }

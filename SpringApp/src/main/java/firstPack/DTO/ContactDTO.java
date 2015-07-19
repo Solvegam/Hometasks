@@ -13,7 +13,6 @@ public class ContactDTO {
     String lastName;
     LocalDate birthday;
 
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
