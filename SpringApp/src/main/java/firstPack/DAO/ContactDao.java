@@ -5,6 +5,7 @@ import firstPack.JavaContactService;
 import firstPack.rootClasses.Contact;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -35,6 +36,10 @@ public class ContactDao {
     @Autowired
     public SessionFactory sessionFactory;
 
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     private Set<Contact> contactList = new HashSet<Contact>();
 
 
@@ -45,9 +50,10 @@ public class ContactDao {
         contact.setLastName(contactDTO.getLastName());
         contact.setBirthDate(contactDTO.getBirthday());
         contactList.add(contact);
-
         Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
         session.save(contact);
+        tx.commit();
     }
 
     @Test

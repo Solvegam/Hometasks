@@ -1,9 +1,15 @@
 package firstPack.rootClasses;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Transient;
+
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -13,7 +19,7 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name = "Contacts")
+@Table(name = "Contact")
 public class Contact
 {
 
@@ -28,16 +34,16 @@ public class Contact
     @Column(name = "last_name")
     private String lastName;
 
-
+    @Transient
     private LocalDate birthDate;
 
-
+    @ElementCollection
     public Set<Hobby> hobbies;
 
-
+    @ElementCollection
     public List<Place> places;
 
-
+    @ElementCollection
     public Set<Contact> friends;
 
     public Contact (){
