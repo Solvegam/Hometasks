@@ -15,6 +15,8 @@ import firstPack.rootClasses.Place;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -36,6 +38,7 @@ public class JavaContactService {
     @Autowired
     private MessageDao messageDao;
 
+    @Transactional
     public void createContact(String firstName, String lastName, LocalDate birthDate)
     {
         ContactDTO contactDTO = new ContactDTO();

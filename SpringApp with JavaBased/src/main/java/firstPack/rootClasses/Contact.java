@@ -1,7 +1,15 @@
 package firstPack.rootClasses;
 
+
+import com.sun.javafx.beans.IDProperty;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Column;
+import javax.persistence.Transient;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -9,15 +17,39 @@ import java.util.Set;
 /**
  * Created by Stas on 17.06.2015.
  */
-@Component
+@Entity
+@Table (name = "Contacts")
 public class Contact
 {
+    @Id
+    @GeneratedValue
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Column (name = "first_Name")
     private String firstName;
+    @Column (name = "second_Name")
     private String lastName;
+    @Column (name ="birthday")
     private LocalDate birthDate;
+    @Transient
     public Set<Hobby> hobbies;
+    @Transient
     public List<Place> places;
+    @Transient
     public Set<Contact> friends;
+
+    public Contact ()
+    {
+        super();
+    }
 
     public String getFirstName() {
         return firstName;

@@ -2,6 +2,9 @@ package firstPack.DAO;
 
 import firstPack.DTO.ContactDTO;
 import firstPack.rootClasses.Contact;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -13,6 +16,9 @@ import java.util.Set;
 @Component
 public class ContactDao {
 
+    @Autowired
+    SessionFactory sessionFactory;
+
     private Set<Contact> contactList = new HashSet<Contact>();
     public void addContact (ContactDTO contactDTO)
     {
@@ -21,6 +27,8 @@ public class ContactDao {
         contact.setLastName(contactDTO.getLastName());
         contact.setBirthDate(contactDTO.getBirthday());
         contactList.add(contact);
+        Session session = sessionFactory.openSession();
+        session.save(contact);
     }
 
     public void deleteContact (Contact person)
