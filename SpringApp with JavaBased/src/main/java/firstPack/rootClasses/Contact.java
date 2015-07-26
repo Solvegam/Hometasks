@@ -2,23 +2,24 @@ package firstPack.rootClasses;
 
 
 import com.sun.javafx.beans.IDProperty;
+import org.hibernate.annotations.ManyToAny;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Column;
-import javax.persistence.Transient;
+import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 /**
  * Created by Stas on 17.06.2015.
  */
+
+
 @Entity
 @Table (name = "Contacts")
+
 public class Contact
 {
     @Id
@@ -35,20 +36,54 @@ public class Contact
 
     @Column (name = "first_Name")
     private String firstName;
+
     @Column (name = "second_Name")
     private String lastName;
+
     @Column (name ="birthday")
-    private LocalDate birthDate;
+    private Date birthDate;
+
     @Transient
-    public Set<Hobby> hobbies;
+    private Set<Hobby> hobbies;
+
     @Transient
-    public List<Place> places;
-    @Transient
-    public Set<Contact> friends;
+    private List<Place> places;
+
+    @ManyToMany
+    @JoinTable(name = "friends")
+    private Set<Contact> friends;
 
     public Contact ()
     {
         super();
+    }
+
+    public Set<Contact> getFriends() {
+        if (friends == null)
+        {
+            friends = new HashSet<Contact>();
+        }
+        return friends;
+    }
+
+    public void setFriends(HashSet<Contact> friends) {
+        this.friends = friends;
+    }
+
+    public Set<Hobby> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(Set<Hobby> hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public List<Place> getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(List<Place> places) {
+        this.places = places;
     }
 
     public String getFirstName() {
@@ -68,11 +103,13 @@ public class Contact
     }
 
     public LocalDate getBirthDate() {
+
+        LocalDate birthDate = this.birthDate.toLocalDate();
         return birthDate;
     }
 
     public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+        this.birthDate = Date.valueOf(birthDate);
     }
 
     @Override

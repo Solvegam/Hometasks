@@ -60,7 +60,7 @@ public class Config {
     @Bean
     public LocalSessionFactoryBean sessionFactory ()
     {
-        final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(myDataSource());
         sessionFactory.setPackagesToScan("firstPack/rootClasses");
         sessionFactory.setHibernateProperties(hibernateProperties());

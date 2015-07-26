@@ -1,6 +1,7 @@
 import firstPack.JavaContactService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ public class StartClass {
         commands.add("To add friendship type: 4; firstFriendFirstName; firstFriendLastName ; secondFriendFirstName ; secondFriendLastName");
         commands.add("To get friendList type: 5; name");
         commands.add("To get conversation type: 6; firstFriendName ; secondFriendName");
-        commands.add("If you want to exit type: 7");
+        commands.add("To delete contact: 7; firstFriendName ; secondFriendName");
+        commands.add("If you want to exit type: 8");
     }
 
     public static void main(String[] args) {
@@ -107,7 +109,18 @@ public class StartClass {
             }
             case 5:
             case 6:
-            case 7:return false;
+            case 7:
+            {
+                String firstName = userAnswer[1].replaceAll(" ","");
+                String lastName = userAnswer[2].replaceAll(" ","");
+                LocalDate birthday = LocalDate.parse(userAnswer[3]);
+                service.deleteContact(firstName,lastName,birthday);
+
+                System.out.println("Contact was deleted");
+
+                return true;
+            }
+            case 8:return false;
             default:
             {
                 System.out.println("You wrote wrong command number");

@@ -12,6 +12,7 @@ import firstPack.rootClasses.Contact;
 import firstPack.rootClasses.Hobby;
 import firstPack.rootClasses.Message;
 import firstPack.rootClasses.Place;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -67,6 +68,7 @@ public class JavaContactService {
         placeDao.addPlace(placeDTO);
     }
 
+    @Transactional
     public  void addFriendship (String firstFriendFirstName,String firstFriendLastName,String secondFriendFirstName,String secondFriendLastName)
     {
         ContactDTO firstContactDTO = new ContactDTO();
@@ -77,6 +79,37 @@ public class JavaContactService {
         secondContactDTO.setFirstName(secondFriendFirstName);
         secondContactDTO.setLastName(secondFriendLastName);
         contactDao.addFriendship(firstContactDTO,secondContactDTO);
+
+        System.out.println("Friendship was added");
+    }
+
+    @Test
+    public void testAddFriendship ()
+    {
+        createContact("John","McLane",LocalDate.parse("1960-01-01"));
+        createContact("Homer","Simpson",LocalDate.parse("1980-12-12"));
+        addFriendship("John","McLane","Homer","Simpson");
+
+        for (Contact contact: contactDao.getContactList())
+        {
+            if(contact.getFirstName().equals("John")&&contact.getFirstName().equals("McLane"))
+            {
+                for(Contact contact2: contact.getFriends())
+                {
+                    System.out.println(contact2.getFirstName());
+                }
+            }
+        }
+    }
+
+    @Transactional
+    public void deleteContact (String firstName, String lastName, LocalDate birthDate)
+    {
+        ContactDTO contactDTO = new ContactDTO();
+        contactDTO.setFirstName(firstName);
+        contactDTO.setLastName(lastName);
+        contactDTO.setBirthday(birthDate);
+        contactDao.deleteContact(contactDTO);
     }
 
     public void setContactDao(ContactDao contactDao) {
@@ -95,11 +128,12 @@ public class JavaContactService {
         this.messageDao = messageDao;
     }
 
-    //    public Set<Contact> getFriendList (Contact person)
+//    @Transactional
+//        public Set<Contact> getFriendList (ContactDTO person)
 //    {
 //
 //    }
-//
+
 //    public List<Message> Conversation (Contact firstContact,Contact secondContact)
 //    {
 //
