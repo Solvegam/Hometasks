@@ -18,7 +18,7 @@ import static org.junit.Assert.assertTrue;
  * Created by Stas on 17.06.2015.
  */
 
-@Repository
+
 public class ContactDao {
 
     @Autowired
@@ -53,6 +53,7 @@ public class ContactDao {
         System.out.println(contactToDelete.getFirstName());
         Session session = sessionFactory.openSession();
         session.delete(contactToDelete);
+        session.flush();
     }
 
     public void addFriendship (ContactDTO firstContactDTO, ContactDTO secondContactDTO) {
@@ -95,7 +96,7 @@ public class ContactDao {
             Session session = sessionFactory.openSession();
             session.saveOrUpdate(firstContact);
             session.saveOrUpdate(secondContact);
-            session.close();
+            session.flush();
     }
 
     public Set<Contact> getContactList() {
