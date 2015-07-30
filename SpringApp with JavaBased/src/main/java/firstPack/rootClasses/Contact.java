@@ -43,7 +43,8 @@ public class Contact
     @Column (name ="birthday")
     private Date birthDate;
 
-    @Transient
+    @ManyToMany
+    @JoinTable(name = "hobbies")
     private Set<Hobby> hobbies;
 
     @Transient

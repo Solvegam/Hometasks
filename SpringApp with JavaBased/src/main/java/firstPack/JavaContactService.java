@@ -49,14 +49,13 @@ public class JavaContactService {
         contactDTO.setBirthday(birthDate);
         contactDao.addContact(contactDTO);
     }
-
+    @Transactional
     public void addHobby(String title,String description)
     {
         HobbyDTO hobbyDTO = new HobbyDTO();
         hobbyDTO.setTitle(title);
         hobbyDTO.setDescription(description);
         hobbyDao.addHobby(hobbyDTO);
-
     }
 
     public void addPlace (String title,String description, double longitude, double latitude)
@@ -111,6 +110,25 @@ public class JavaContactService {
         contactDTO.setLastName(lastName);
         contactDTO.setBirthday(birthDate);
         contactDao.deleteContact(contactDTO);
+    }
+    @Transactional
+    public void addHobbyToContact (String name, String lastName)
+    {
+
+        ContactDTO contactDTO = new ContactDTO();
+        contactDTO.setFirstName(name);
+        contactDTO.setLastName(lastName);
+
+        System.out.println("Choose correct hobby for this person from the list below");
+        System.out.println("");
+
+        hobbyDao.getAllHobbies();
+
+//        HobbyDTO hobbyDTO = new HobbyDTO();
+//        hobbyDTO.setTitle(hobbyTitle);
+//        hobbyDTO.setDescription(hobbyDescription);
+//
+//        contactDao.;
     }
 
     public void setContactDao(ContactDao contactDao) {

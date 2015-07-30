@@ -24,7 +24,8 @@ public class StartClass {
         commands.add("To get friendList type: 5; name");
         commands.add("To get conversation type: 6; firstFriendName ; secondFriendName");
         commands.add("To delete contact: 7; firstFriendName ; secondFriendName");
-        commands.add("If you want to exit type: 8");
+        commands.add("To add hobby to contact: 8; firstName ; lastName");
+        commands.add("If you want to exit type: 9");
     }
 
     public static void main(String[] args) {
@@ -120,7 +121,17 @@ public class StartClass {
 
                 return true;
             }
-            case 8:return false;
+            case 8:
+            {
+                String firstName = userAnswer[1].replaceAll(" ","");
+                String lastName = userAnswer[2].replaceAll(" ","");
+                service.addHobbyToContact(firstName,lastName);
+
+                System.out.println("Hobby was successfuly added to contact: " + firstName +" "+ lastName);
+
+                return true;
+            }
+            case 9:return false;
             default:
             {
                 System.out.println("You wrote wrong command number");

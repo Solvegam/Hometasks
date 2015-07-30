@@ -1,6 +1,7 @@
 package firstPack.DAO;
 
 import firstPack.DTO.ContactDTO;
+import firstPack.DTO.HobbyDTO;
 import firstPack.rootClasses.Contact;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -136,6 +137,11 @@ public class ContactDao {
                 }
             }
         }
+    }
+
+    public void addHobbyToContact (ContactDTO contactDTO,HobbyDTO hobbyDTO)
+    {
+
     }
 
     public void removeFriendShip (Contact firstPerson,Contact secondPerson)

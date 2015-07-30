@@ -1,11 +1,20 @@
 package firstPack.rootClasses;
 
+import javax.persistence.*;
+
 /**
  * Created by Stas on 17.06.2015.
  */
+@Entity
+@Table (name ="HOBBIES")
 public class Hobby {
+    @Id
+    @GeneratedValue
+    private int id;
 
+    @Column (name = "hobby_title")
     private String title;
+    @Column (name = "hobby_description")
     private String description;
 
     public String getTitle() {
