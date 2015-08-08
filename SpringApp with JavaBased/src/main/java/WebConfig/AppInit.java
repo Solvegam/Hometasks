@@ -1,8 +1,7 @@
 package WebConfig;
 
-import WebConfig.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import start.MyConfig;
+import AppConfig.MyConfig;
 
 /**
  * Created by Stas on 06.08.2015.

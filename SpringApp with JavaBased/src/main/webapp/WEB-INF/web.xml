@@ -12,11 +12,12 @@
                 /WEB-INF/mvc-dispatcher-servlet.xml
             </param-value>
         </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
    <servlet-mapping>
       <servlet-name>mvc-dispatcher</servlet-name>
-      <url-pattern>/start/</url-pattern>
+      <url-pattern>/</url-pattern>
    </servlet-mapping>
  
 </web-app>

@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/start")
 
 public class Mycontroller {
 
     @RequestMapping(method = RequestMethod.GET)
+//    @RequestMapping(value = "/start")
     public String printWelcome(ModelMap model) {
-        model.addAttribute("message", "If you want to start – just wait");
+        model.addAttribute("message", "If you want to AppConfig – just wait");
         return "start";
     }
 }

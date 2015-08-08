@@ -1,7 +1,7 @@
 import firstPack.JavaContactService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import start.MyConfig;
+import AppConfig.MyConfig;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
