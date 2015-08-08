@@ -1,9 +1,10 @@
+package AppConfig;
+
 import firstPack.DAO.ContactDao;
 import firstPack.DAO.HobbyDao;
 import firstPack.DAO.MessageDao;
 import firstPack.DAO.PlaceDao;
 import firstPack.JavaContactService;
-import firstPack.rootClasses.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +19,9 @@ import java.util.Properties;
 /**
  * Created by Stas on 04.07.2015.
  */
+
 @Configuration
-public class Config {
+public class MyConfig {
     @Bean
     public JavaContactService service ()
     {

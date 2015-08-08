@@ -31,7 +31,7 @@
 
         <property name="dataSource" ref="dataSource" />
 
-        <property name="packagesToScan" value="firstPack.rootClasses.*"/>
+        <property name="packagesToScan" value="firstPack.rootClasses.Hobby"/>
 
         <!--<property name="mappingLocations" value="classpath:firstPack/**/*.hbm.xml" />-->
 

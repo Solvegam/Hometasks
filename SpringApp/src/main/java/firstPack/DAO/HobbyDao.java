@@ -3,8 +3,12 @@ package firstPack.DAO;
 import firstPack.DTO.HobbyDTO;
 import firstPack.rootClasses.Contact;
 import firstPack.rootClasses.Hobby;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -20,6 +24,13 @@ import static org.mockito.Mockito.*;
 @Component
 public class HobbyDao {
 
+    @Autowired
+    public SessionFactory sessionFactory;
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     private Set<Hobby> hobbyList = new HashSet<Hobby>();
 
     public void addHobby(HobbyDTO hobbyDTO)
@@ -28,6 +39,10 @@ public class HobbyDao {
         hobby.setTitle(hobbyDTO.getTitle());
         hobby.setDescription(hobbyDTO.getDescription());
         hobbyList.add(hobby);
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.save(hobby);
+        tx.commit();
     }
 
     @Test

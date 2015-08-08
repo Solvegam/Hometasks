@@ -19,6 +19,11 @@
         <artifactId>spring-context</artifactId>
         <version>4.1.6.RELEASE</version>
     </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-orm</artifactId>
+          <version>RELEASE</version>
+      </dependency>
 <dependency>
   <groupId>org.mockito</groupId>
   <artifactId>mockito-core</artifactId>

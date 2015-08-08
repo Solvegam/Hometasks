@@ -1,12 +1,36 @@
 package firstPack.rootClasses;
 
+import javax.persistence.*;
+
 /**
  * Created by Stas on 17.06.2015.
  */
+@Entity
+@Table (name = "HOBBY")
 public class Hobby {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Column(name = "hobby_title")
     private String title;
+    @Column(name = "hobby_description")
     private String description;
+
+    public Hobby ()
+    {
+        super();
+    }
 
     public String getTitle() {
         return title;
