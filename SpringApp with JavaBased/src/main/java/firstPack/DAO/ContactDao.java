@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.junit.Test;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -100,7 +101,8 @@ public class ContactDao {
             session.flush();
     }
 
-    public Set<Contact> getContactList() {
+    public Set<Contact> getContactList()
+    {
         return contactList;
     }
 

@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -78,7 +79,7 @@ public class JavaContactService {
         ContactDTO secondContactDTO = new ContactDTO();
         secondContactDTO.setFirstName(secondFriendFirstName);
         secondContactDTO.setLastName(secondFriendLastName);
-        contactDao.addFriendship(firstContactDTO,secondContactDTO);
+        contactDao.addFriendship(firstContactDTO, secondContactDTO);
 
         System.out.println("Friendship was added");
     }
@@ -86,9 +87,9 @@ public class JavaContactService {
     @Test
     public void testAddFriendship ()
     {
-        createContact("John","McLane",LocalDate.parse("1960-01-01"));
-        createContact("Homer","Simpson",LocalDate.parse("1980-12-12"));
-        addFriendship("John","McLane","Homer","Simpson");
+        createContact("John", "McLane", LocalDate.parse("1960-01-01"));
+        createContact("Homer", "Simpson", LocalDate.parse("1980-12-12"));
+        addFriendship("John", "McLane", "Homer", "Simpson");
 
         for (Contact contact: contactDao.getContactList())
         {
@@ -129,6 +130,16 @@ public class JavaContactService {
 //        hobbyDTO.setDescription(hobbyDescription);
 //
 //        contactDao.;
+    }
+
+    @Transactional
+    public Set<Contact> getAllContacs()
+    {
+        createContact("John", "McLane", LocalDate.parse("1960-01-01"));
+
+        Set<Contact> allContacs = contactDao.getContactList();
+
+        return allContacs;
     }
 
     public void setContactDao(ContactDao contactDao) {
