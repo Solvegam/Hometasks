@@ -112,10 +112,8 @@ public class StartClass {
             case 6:
             case 7:
             {
-                String firstName = userAnswer[1].replaceAll(" ","");
-                String lastName = userAnswer[2].replaceAll(" ","");
-                LocalDate birthday = LocalDate.parse(userAnswer[3]);
-                service.deleteContact(firstName,lastName,birthday);
+                String id= userAnswer[1];
+                service.deleteContact(id);
 
                 System.out.println("Contact was deleted");
 

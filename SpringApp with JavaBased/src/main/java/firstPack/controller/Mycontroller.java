@@ -26,7 +26,6 @@ public class Mycontroller {
 
     @RequestMapping(method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
-
         Set<Contact> contacts = this.service.getAllContacs();
         model.addAttribute("message", "You can see all contacts below");
         model.addAttribute("ContactList",contacts);
@@ -49,10 +48,9 @@ public class Mycontroller {
 
     @RequestMapping(value = "deleteContact", method = RequestMethod.POST)
     public String deleteContact(HttpServletRequest request,ModelMap model) {
-        System.out.println(request.getParameter("firstName"));
-        System.out.println(request.getParameter("lastName"));
-        System.out.println(request.getParameter("birthday"));
-        this.service.createContact(request.getParameter("firstName"), request.getParameter("lastName"), LocalDate.parse(request.getParameter("birthday")));
+
+        System.out.println(request.getParameter("contactID"));
+        this.service.deleteContact(request.getParameter("contactID"));
 
         Set<Contact> contacts = this.service.getAllContacs();
         model.addAttribute("message", "You can see all contacts below");

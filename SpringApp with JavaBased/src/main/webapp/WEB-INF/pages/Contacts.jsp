@@ -4,7 +4,8 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <html>
 <head>
-<title>My example</title>
+<title>Contacts</title>
+    <link href="WEB-INF/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <fieldset>
@@ -54,31 +55,11 @@
                 <tr>
                     <td>
                         <p>
-                            First name
+                            Contact ID
                         </p>
                     </td>
                     <td>
-                        <input type="text" name="firstName"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>
-                            Last name
-                        </p>
-                    </td>
-                    <td>
-                        <input type="text" name="lastName"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>
-                            Birthday (yyyy-mm-dd)
-                        </p>
-                    </td>
-                    <td>
-                        <input type="text" name="birthday"/>
+                        <input type="text" name="contactID"/>
                     </td>
                 </tr>
                 <tr>
@@ -89,11 +70,11 @@
     </fieldset>
    <h2>${message}</h2>
    <c:if test="${!empty ContactList}">
-      <table>
+      <table border="1">
          <tr>
             <th>ID</th>
             <th>First Name</th>
-            <th>Seond Name</th>
+            <th>Second Name</th>
             <th>birthday</th>
          </tr>
           <tr>

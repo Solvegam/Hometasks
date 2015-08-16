@@ -10,8 +10,10 @@ import org.springframework.stereotype.Component;
 import org.junit.Test;
 import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
+import javax.transaction.*;
+import javax.transaction.xa.XAResource;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import static org.junit.Assert.assertTrue;
@@ -34,19 +36,20 @@ public class ContactDao {
         contact.setFirstName(contactDTO.getFirstName());
         contact.setLastName(contactDTO.getLastName());
         contact.setBirthDate(contactDTO.getBirthday());
-        contactList.add(contact);
         Session session = sessionFactory.openSession();
         session.save(contact);
         session.close();
     }
 
-    public void deleteContact (ContactDTO contactDTO)
+    public void deleteContact (String contactID)
     {
+        int ID = Integer.parseInt(contactID);
+
         Contact contactToDelete = null;
 
         for(Contact contact: contactList)
         {
-            if (contact.getFirstName().equals(contactDTO.getFirstName())&&contact.getLastName().equals(contactDTO.getLastName()))
+            if (contact.getId()== ID)
             {
                 contactToDelete = contact;
                 System.out.println("yes");
@@ -54,7 +57,7 @@ public class ContactDao {
         }
         System.out.println(contactToDelete.getFirstName());
         Session session = sessionFactory.openSession();
-        session.delete(contactToDelete);
+        session.createSQLQuery("DELETE FROM contacts WHERE id="+contactToDelete.getId()).addEntity(Contact.class).executeUpdate();
         session.flush();
     }
 
@@ -102,7 +105,9 @@ public class ContactDao {
     }
 
     public Set<Contact> getContactList()
-    {
+    {   Session session = sessionFactory.openSession();
+        cotactListUpdating(session);
+        session.close();
         return contactList;
     }
 
@@ -150,4 +155,15 @@ public class ContactDao {
     {
 
     }
+
+    private void cotactListUpdating (Session session)
+    {
+        contactList = new HashSet<Contact>();
+        ArrayList <Contact> list = (ArrayList<Contact>)session.createSQLQuery("SELECT * FROM contacts").addEntity(Contact.class).list();
+        for (int i =0; i <list.size(); i++)
+        {
+            contactList.add(list.get(i));
+        }
+    }
+
 }

@@ -104,13 +104,9 @@ public class JavaContactService {
     }
 
     @Transactional
-    public void deleteContact (String firstName, String lastName, LocalDate birthDate)
+    public void deleteContact (String contactID)
     {
-        ContactDTO contactDTO = new ContactDTO();
-        contactDTO.setFirstName(firstName);
-        contactDTO.setLastName(lastName);
-        contactDTO.setBirthday(birthDate);
-        contactDao.deleteContact(contactDTO);
+        contactDao.deleteContact(contactID);
     }
     @Transactional
     public void addHobbyToContact (String name, String lastName)
@@ -135,7 +131,7 @@ public class JavaContactService {
     @Transactional
     public Set<Contact> getAllContacs()
     {
-        createContact("John", "McLane", LocalDate.parse("1960-01-01"));
+//        createContact("John", "McLane", LocalDate.parse("1960-01-01"));
 
         Set<Contact> allContacs = contactDao.getContactList();
 
@@ -157,6 +153,8 @@ public class JavaContactService {
     public void setMessageDao(MessageDao messageDao) {
         this.messageDao = messageDao;
     }
+
+
 
 //    @Transactional
 //        public Set<Contact> getFriendList (ContactDTO person)
